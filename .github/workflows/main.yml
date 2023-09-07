@@ -1,0 +1,30 @@
+name: "Auto Deploy"
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remote SSH Commands
+        uses: fifsky/ssh-action@v0.0.6
+        with:
+          command: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            cd pwcollections/
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/cloud8point5_github
+            splint3trebly6handbag6befell
+            pm2 stop all
+            git stash
+            git stash clear
+            git pull
+            npm i
+            npm run build
+            pm2 restart all
+          host: ${{ secrets.DROPLET_HOST }}
+          user: root
+          key: ${{ secrets.DROPLET_PRIVATE_KEY }}
