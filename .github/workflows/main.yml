@@ -12,19 +12,14 @@ jobs:
         uses: fifsky/ssh-action@v0.0.6
         with:
           command: |
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
-            cd pwcollections/
-            eval "$(ssh-agent -s)"
-            ssh-add ~/.ssh/cloud8point5_github
-            splint3trebly6handbag6befell
-            pm2 stop all
+            cd pwcollections/pwcwebapp
+            pm2 stop pwcwebapp
             git stash
             git stash clear
             git pull
             npm i
             npm run build
-            pm2 restart all
-          host: ${{ secrets.DROPLET_HOST }}
-          user: root
-          key: ${{ secrets.DROPLET_PRIVATE_KEY }}
+            pm2 restart pwcwebapp
+          host: cloud8point5.com
+          user: github
+          key: ${{ secrets.SERVER_PRIVATE_KEY }}
