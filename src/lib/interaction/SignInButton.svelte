@@ -31,7 +31,7 @@
             });
             
             await Essential.setup()
-            goto("/", {replaceState: true});
+            goto("/pregame", {replaceState: true});
 
         } else {
             showAlert("Uh Oh","An error occurred: "+res.status);            
