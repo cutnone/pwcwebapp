@@ -2,7 +2,7 @@ import { dev } from "$app/environment";
 import fetch from "node-fetch"
 import net from "net"
 
-const BACKEND_PORT = 3004;
+const BACKEND_PORT = 3005;
 
 export default class {
     static async fetch(url: URL | RequestInfo, authToken?: string, init?: RequestInit) {
