@@ -13,13 +13,13 @@ jobs:
         with:
           command: |
             cd pwcollections/pwcwebapp
-            pm2 stop pwcwebapp
+            supervisorctl stop pwcwebapp
             git stash
             git stash clear
             git pull
-            npm i
-            npm run build
-            pm2 restart pwcwebapp
+            /bin/bun i
+            /bin/bun run build
+            supervisorctl start pwcwebapp
           host: cloud8point5.com
           user: github
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
