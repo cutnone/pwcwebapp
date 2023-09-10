@@ -13,12 +13,13 @@ export default class {
             } else if (!init.headers) init.headers = {}
             init.headers["Authorization"] = authToken;
         }
+        const originalURL = url;
         let useURL = url;
         if (typeof url === "string" && !url.startsWith("http")) {
             useURL = `http://localhost:${LOCAL_BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + useURL;
             
             if (dev && !(await this.isLocal())) {
-                useURL = `https://pwcollections.cloud8point5.com:${PUBLIC_BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + useURL;
+                useURL = `https://pwcollections.cloud8point5.com:${PUBLIC_BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + originalURL;
             }
         }
         return await fetch(useURL as any, init as any); // shut the fuck up typescript
