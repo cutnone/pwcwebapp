@@ -1,6 +1,7 @@
 import { dev } from "$app/environment";
 import Cookies from "js-cookie";
 
+const LOCAL_BACKEND_PORT = 3004;
 const BACKEND_PORT = 3005;
 
 export default class Backend {
@@ -72,7 +73,7 @@ export default class Backend {
         const originalURL = url;
         let useURL;
         if (typeof url === "string" && !url.startsWith("http")) {
-            useURL = `http://localhost:${BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + originalURL;
+            useURL = `http://localhost:${LOCAL_BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + originalURL;
             
             if (!dev || (dev && !(await this.testIsLocal()))) {
                 useURL = `https://pwcollections.cloud8point5.com:${BACKEND_PORT}${url.startsWith("/") ? "" : "/"}` + originalURL;
