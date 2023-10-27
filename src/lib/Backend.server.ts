@@ -2,7 +2,7 @@ import { dev } from "$app/environment";
 import fetch from "node-fetch"
 import net from "net"
 
-const LOCAL_BACKEND_PORT = 3005;
+const LOCAL_BACKEND_PORT = 3004;
 const PUBLIC_BACKEND_PORT = 3005;
 
 export default class {
