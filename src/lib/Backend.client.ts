@@ -60,7 +60,7 @@ export default class Backend {
         }
     }
 
-    static async rawFetch(url: URL | RequestInfo, init?: RequestInit) {
+    static async rawFetch(url: URL | RequestInfo, init: RequestInit = {}) {
         if (Cookies.get("token")) {
             if (!init) {
                 init = {headers: {}}
